@@ -1,4 +1,10 @@
-The goal is to implement the Looplets language.
+The goal is to implement the Looplets language. This will only be a demonstration and does not serve the
+purpose of looplets as an intermediate representation that can be efficiently compiled further.
+The purpose is to obtain a better understanding of the language. End aim is to use looplets to represent
+tensors (and possibly operate on them).
+
+Currently, only tensors of order ≤ 2 are tested. Although,
+the implementation should be able to handle higher dimensions. Only getters and iterators are implemented.
 
 # Looplets
 Looplets are abstract descriptions of regular or irregular pat-
@@ -7,6 +13,8 @@ to iterate over the sequence. Looplets represent sequences
 using hierarchical descriptions of the values within each
 region or subregion. Regions are specified by their absolute
 starting and ending index, referred to together as an extent.
+
+See: [The Original Looplets paper](https://arxiv.org/pdf/2209.05250)
 
 # Example:
 
@@ -39,7 +47,7 @@ print(matrix[1, 1])
 We shall start by implementing Pipeline, Phase, Lookup, and Run in python.
 
 
-To represt a 2D matrix with all zeros, one can do:
+To represent a 2D matrix with all zeros, one can do:
 
 ```
 A = Pipeline(
@@ -62,8 +70,7 @@ Pipeline(
             )
         )
 
-Note, that the matrix is infinite. This is because this is an iterator.
-Underneath, A is a generator function that yields the values of the matrix
+Note, that this matrix is infinite. Underneath, A is a generator function that yields the values of the matrix
 according to its definition.
 
 
